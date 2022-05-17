@@ -1,0 +1,22 @@
+<div class="macro-bar flex row h-100 w-100 j-c-sb">
+	<div class="macros flex row">
+		<div
+			*ngFor="let macro of macros$ | async"
+			[class.disabled]="!autoCaptioning"
+			[title]="!autoCaptioning ? 'Macros only available while respeaking' : ''"
+			class="macro flex col j-c-c a-i-c"
+		>
+			<span (click)="autoCaptioning ? sendChunk(macro.value) : ''">
+				{{ macro.name }}
+			</span>
+		</div>
+	</div>
+	<img
+		(click)="openMacroDialog()"
+		alt="macro-menu"
+		class="macro-menu"
+		height="40"
+		src="../../../../../assets/svg/macro-menu.svg"
+		width="40"
+	/>
+</div>

@@ -1,0 +1,68 @@
+@import 'colors';
+
+.lds-ellipsis {
+	background: $white;
+	aspect-ratio: 1 / 1;
+	height: 100%;
+
+	.circle {
+		position: relative;
+		display: flex;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: $blue-20;
+		animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+		&.one {
+			left: 0;
+			animation: lds-ellipsis-one 0.8s infinite;
+		}
+
+		&.two {
+			left: 0;
+			animation: lds-ellipsis-two 0.8s infinite;
+		}
+
+		&.three {
+			left: 15px;
+			animation: lds-ellipsis-two 0.8s infinite;
+		}
+
+		&.four {
+			left: 30px;
+			animation: lds-ellipsis-three 0.8s infinite;
+		}
+	}
+
+}
+
+@keyframes lds-ellipsis-one {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes lds-ellipsis-two {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	100% {
+		transform: translate(15px, 0);
+	}
+}
+
+@keyframes lds-ellipsis-three {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0);
+	}
+}

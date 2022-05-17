@@ -1,0 +1,16 @@
+@import 'colors';
+
+app-button-component {
+	&.pushing-button {
+		button {
+			padding: 0 16px;
+			width: max-content;
+		}
+
+		&.pushing {
+			button {
+				background: $orange-40;
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+@import 'colors';
+@import 'spacings';
+
+.back {
+	color: $blue-50;
+	cursor: pointer;
+	display: flex;
+	font-weight: 600;
+	margin-bottom: $l;
+}

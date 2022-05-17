@@ -1,0 +1,92 @@
+<div class="flex w-100 j-c-sb a-i-c mb-20 header">
+	<h3 class="no-click">Settings</h3>
+	<app-icon
+		(click)="!sublistForm.dirty ? dialogRef.close() : openConfirmPopup()"
+		[independent]="true"
+		[svg]="'close'"
+	></app-icon>
+</div>
+
+<h4 class="no-click">SubLists</h4>
+
+<div [formGroup]="sublistForm">
+	<div class="flex row a-i-fs main">
+		<div class="flex-1 mr-20 menu">
+			<div class="flex mb-20">
+				<span class="flex-1 no-click fw-6 pl-8">Name</span>
+				<span class="flex-1 no-click fw-6">Description</span>
+			</div>
+			<div
+				(click)="chooseSubList(subList)"
+				*ngFor="let subList of subLists | async"
+				[class.chosen]="
+					subList.subListId === sublistForm.controls.subListId.value
+				"
+				[class.not-saved]="!subList.subListId"
+				class="pointer flex entry-row"
+			>
+				<span class="flex-1">{{ subList.name }}</span>
+				<span class="flex-1">{{ subList.notes }}</span>
+			</div>
+		</div>
+
+		<div *ngIf="sublistForm.controls; else empty" class="flex-1">
+			<div class="flex row j-c-fs a-i-c edit-header">
+				<div class="flex col mr-20">
+					<label class="mb-20 fw-6" for="name">Name:</label>
+					<input
+						[value]="sublistForm.controls.name.value"
+						class="fs-s"
+						formControlName="name"
+						id="name"
+					/>
+				</div>
+				<div class="flex col">
+					<label class="mb-20 fw-6" for="notes">Description:</label>
+					<input
+						[value]="sublistForm.controls.notes.value"
+						class="fs-s"
+						formControlName="notes"
+						id="notes"
+					/>
+				</div>
+			</div>
+			<textarea
+				[value]="sublistForm.controls.subList.value"
+				class="mb-20 fs-s"
+				formControlName="subList"
+			></textarea>
+		</div>
+		<ng-template #empty>
+			<table class="flex-1"></table>
+		</ng-template>
+	</div>
+</div>
+
+<div class="flex w-100 row j-c-sb a-i-c">
+	<app-icon
+		(click)="addNewOne()"
+		[independent]="true"
+		[svg]="'close'"
+		class="button add"
+	></app-icon>
+	<div class="flex row gap">
+		<app-small-button
+			(click)="deleteSubList()"
+			*ngIf="sublistForm.controls.subListId.value"
+			[buttonText]="'Delete'"
+			[icon]="'close'"
+			[inverted]="true"
+			[small]="true"
+			class="button"
+		></app-small-button>
+		<app-small-button
+			(click)="saveOrUpdateSubList()"
+			*ngIf="sublistForm.dirty"
+			[buttonText]="'Save or Update'"
+			[icon]="'save'"
+			[inverted]="true"
+			[small]="true"
+		></app-small-button>
+	</div>
+</div>

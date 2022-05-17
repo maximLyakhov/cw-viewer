@@ -1,0 +1,90 @@
+{
+	"name": "caption-works",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"ng": "ng",
+		"lint": "ng lint --fix",
+		"lint-scss": "stylelint src/**/*.scss",
+		"format": "npx prettier \"src/**/*.{html,ts}\" --write",
+		"start": "npm run start:c & npm run start:v",
+		"start:c": "ng serve captioner -o --port=4200",
+		"start:v": "ng serve viewer -o --port=4201",
+		"local": "npm run local:c & npm run local:v",
+		"local:c": "ng serve captioner -o --port=4200 -c local",
+		"local:v": "ng serve viewer -o --port=4201 -c local",
+		"prod": "npm run prod:c & npm run prod:v",
+		"prod:c": "ng serve captioner -o --port=4200 --prod",
+		"prod:v": "ng serve viewer -o --port=4201 --prod",
+		"build": "npm run build:c & npm run build:v",
+		"build:c": "ng build captioner",
+		"build:v": "ng build viewer"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged -r",
+			"post-commit": "git update-index --again"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{html,ts}": [
+			"ng-lint-staged lint --fix --",
+			"prettier --write"
+		],
+		"src/**/*.scss": "stylelint"
+	},
+	"dependencies": {
+		"@angular/animations": "^13.3.0",
+		"@angular/cdk": "^13.3.0",
+		"@angular/common": "^13.3.0",
+		"@angular/compiler": "^13.3.0",
+		"@angular/core": "^13.3.0",
+		"@angular/forms": "^13.3.0",
+		"@angular/material": "^13.3.0",
+		"@angular/platform-browser": "^13.3.0",
+		"@angular/platform-browser-dynamic": "^13.3.0",
+		"@angular/router": "^13.3.0",
+		"@fontsource/inter": "^4.5.5",
+		"@ng-select/ng-select": "^8.1.1",
+		"@ngneat/until-destroy": "^9.0.0",
+		"@ngxs-labs/dispatch-decorator": "^4.0.2",
+		"@ngxs-labs/select-snapshot": "^4.0.0",
+		"@ngxs/logger-plugin": "^3.7.3",
+		"@ngxs/router-plugin": "^3.7.3",
+		"@ngxs/storage-plugin": "^3.7.3",
+		"@ngxs/store": "^3.7.3",
+		"@ngxs/websocket-plugin": "^3.7.3",
+		"@twilio/voice-sdk": "^2.1.1",
+		"rxjs": "~6.6.0",
+		"tslib": "^2.3.0",
+		"util": "^0.12.4",
+		"zone.js": "^0.11.5"
+	},
+	"devDependencies": {
+		"@angular-devkit/build-angular": "^13.3.0",
+		"@angular-eslint/builder": "^13.1.0",
+		"@angular-eslint/eslint-plugin": "^13.1.0",
+		"@angular-eslint/eslint-plugin-template": "^13.1.0",
+		"@angular-eslint/schematics": "^13.1.0",
+		"@angular-eslint/template-parser": "^13.1.0",
+		"@angular/cli": "^13.3.0",
+		"@angular/compiler-cli": "^13.3.0",
+		"@ngxs/devtools-plugin": "^3.7.3",
+		"@types/dom-mediacapture-record": "^1.0.11",
+		"@types/node": "^16.11.26",
+		"@types/web": "^0.0.56",
+		"@typescript-eslint/eslint-plugin": "^5.14.0",
+		"@typescript-eslint/parser": "5.3.0",
+		"@typescript/lib-dom": "npm:@types/web@0.0.56",
+		"eslint": "^8.10.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.5",
+		"ng-lint-staged": "^12.0.3",
+		"prettier": "^2.6.1",
+		"stylelint": "^14.5.3",
+		"stylelint-config-standard-scss": "^3.0.0",
+		"typescript": "~4.5.5"
+	}
+}

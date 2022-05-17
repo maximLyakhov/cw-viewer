@@ -1,0 +1,323 @@
+{
+	"$schema": "/node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "src",
+	"projects": {
+		"captioner": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				},
+				"@schematics/angular:component": {
+					"style": "scss",
+					"skipTests": true
+				},
+				"@schematics/angular:directive": {
+					"skipTests": true
+				},
+				"@schematics/angular:modules": {
+					"skipTests": true
+				},
+				"@schematics/angular:pipe": {
+					"skipTests": true
+				},
+				"@schematics/angular:service": {
+					"skipTests": true
+				},
+				"@schematics/angular:class": {
+					"skipTests": true
+				},
+				"@schematics/angular:guard": {
+					"skipTests": true
+				},
+				"@schematics/angular:ng-new": {
+					"skipTests": false
+				},
+				"@schematics/angular:resolver": {
+					"skipTests": true
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "app-captioner",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"stylePreprocessorOptions": {
+							"includePaths": [
+								"src/assets/styles"
+							]
+						},
+						"allowedCommonJsDependencies": [
+							"@twilio/voice-sdk"
+						],
+						"preserveSymlinks": true,
+						"outputPath": "dist/captioner",
+						"index": "src/index.html",
+						"main": "src/main.captioner.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.app.captioner.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"src/assets"
+						],
+						"styles": [
+							"src/assets/styles/colors.scss",
+							"src/assets/styles/flex.scss",
+							"src/assets/styles/constant-heights.scss",
+							"src/assets/styles/shadows.scss",
+							"src/assets/styles/scrollbars.scss",
+							"src/assets/styles/spacings.scss",
+							"src/assets/styles/typography.scss",
+							"src/assets/styles/utilities.scss",
+							"src/styles.scss"
+						]
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "1mb",
+									"maximumError": "2mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/production/environment.prod.captioner.ts"
+								}
+							],
+							"outputHashing": "all",
+							"buildOptimizer": true,
+							"optimization": true,
+							"vendorChunk": false,
+							"extractLicenses": true,
+							"sourceMap": false,
+							"namedChunks": false,
+							"outputPath": "build-captioner"
+						},
+						"local": {
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/local/environment.local.captioner.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						},
+						"development": {
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/development/environment.dev.captioner.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "captioner:build:production"
+						},
+						"development": {
+							"browserTarget": "captioner:build:development"
+						},
+						"local": {
+							"browserTarget": "captioner:build:local"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
+						]
+					}
+				}
+			}
+		},
+		"viewer": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:application": {
+					"strict": true
+				},
+				"@schematics/angular:component": {
+					"style": "scss",
+					"skipTests": true
+				},
+				"@schematics/angular:directive": {
+					"skipTests": true
+				},
+				"@schematics/angular:modules": {
+					"skipTests": true
+				},
+				"@schematics/angular:pipe": {
+					"skipTests": true
+				},
+				"@schematics/angular:service": {
+					"skipTests": true
+				},
+				"@schematics/angular:class": {
+					"skipTests": true
+				},
+				"@schematics/angular:guard": {
+					"skipTests": true
+				},
+				"@schematics/angular:ng-new": {
+					"skipTests": false
+				},
+				"@schematics/angular:resolver": {
+					"skipTests": true
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "app-viewer",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"stylePreprocessorOptions": {
+							"includePaths": [
+								"src/assets/styles"
+							]
+						},
+						"allowedCommonJsDependencies": [
+							"@twilio/voice-sdk"
+						],
+						"preserveSymlinks": true,
+						"outputPath": "dist/viewer",
+						"index": "src/index.html",
+						"main": "src/main.viewer.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.app.viewer.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"src/assets"
+						],
+						"styles": [
+							"src/assets/styles/colors.scss",
+							"src/assets/styles/flex.scss",
+							"src/assets/styles/constant-heights.scss",
+							"src/assets/styles/shadows.scss",
+							"src/assets/styles/scrollbars.scss",
+							"src/assets/styles/spacings.scss",
+							"src/assets/styles/typography.scss",
+							"src/assets/styles/utilities.scss",
+							"src/styles.scss"
+						]
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "1mb",
+									"maximumError": "2mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/production/environment.prod.viewer.ts"
+								}
+							],
+							"outputHashing": "all",
+							"buildOptimizer": true,
+							"optimization": true,
+							"vendorChunk": false,
+							"extractLicenses": true,
+							"sourceMap": false,
+							"namedChunks": false,
+							"outputPath": "build-viewer"
+						},
+						"local": {
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/local/environment.local.viewer.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						},
+						"development": {
+							"fileReplacements": [
+								{
+									"replace": "src/shared/environments/environment.ts",
+									"with": "src/shared/environments/development/environment.dev.viewer.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "viewer:build:production"
+						},
+						"development": {
+							"browserTarget": "viewer:build:development"
+						},
+						"local": {
+							"browserTarget": "viewer:build:local"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
+						]
+					}
+				}
+			}
+		}
+	}
+}

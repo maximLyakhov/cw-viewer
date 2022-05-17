@@ -1,0 +1,11 @@
+<div *ngIf="sentence && sentence.length" class="card">
+	<span
+		*ngFor="let word of sentence; let last = last"
+		class="caption fs-l"
+		[class.last]="last"
+		[class.update]="word.update"
+		[class.final]="word.final"
+	>
+		{{ word.txt }}
+	</span>
+</div>

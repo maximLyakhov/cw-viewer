@@ -1,0 +1,74 @@
+<div class="flex row j-c-sb mb-20 a-i-c">
+	<h3 class="mr-20">📚 Edit macros</h3>
+	<app-icon
+		(click)="dialogRef.close(false)"
+		[independent]="true"
+		[svg]="'close'"
+	></app-icon>
+</div>
+<form [formGroup]="macroForm">
+	<div [formArrayName]="'macroArray'" class="flex col">
+		<ng-container
+			*ngFor="
+				let control of controlArray.controls;
+				let i = index;
+				let last = last
+			"
+		>
+			<div [formGroupName]="i" class="flex row gap a-i-c">
+				<div
+					#lastInput
+					(initEvent)="lastInput.focus()"
+					[isLast]="last"
+					appElementInit
+				>
+					<app-input-component
+						[formControlName]="'name'"
+						[inputLabel]="'Macro name'"
+						[inputPlaceholder]="''"
+						[inputType]="'text'"
+					></app-input-component>
+				</div>
+				<app-input-component
+					[formControlName]="'value'"
+					[inputLabel]="'Assign macro to'"
+					[inputPlaceholder]="''"
+					[inputType]="'text'"
+				></app-input-component>
+				<app-icon
+					(click)="deleteMacro(i)"
+					[svg]="'delete'"
+					class="mb-20"
+				></app-icon>
+			</div>
+		</ng-container>
+	</div>
+</form>
+<div>
+	<app-small-button
+		(click)="addNewMacro()"
+		[buttonText]="'Add new macro'"
+		[inverted]="false"
+		class="flex mt-20 mb-20"
+	></app-small-button>
+	<app-small-button
+		(click)="clearAllMacros()"
+		*ngIf="controlArray.value && controlArray.value.length"
+		[buttonText]="'Clear all macros'"
+		[inverted]="true"
+		class="flex mb-20"
+	></app-small-button>
+	<div class="flex row gap j-c-sb">
+		<app-small-button
+			(click)="dialogRef.close(false)"
+			[buttonText]="'Cancel'"
+			[inverted]="true"
+		></app-small-button>
+		<app-small-button
+			(click)="dialogRef.close(controlArray.value)"
+			[buttonDisabled]="macroForm.invalid"
+			[buttonText]="'Save'"
+			[inverted]="false"
+		></app-small-button>
+	</div>
+</div>

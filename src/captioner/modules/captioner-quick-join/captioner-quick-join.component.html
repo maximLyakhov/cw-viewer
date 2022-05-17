@@ -1,0 +1,35 @@
+<div class="quick-join flex row">
+	<div class="left-side w-100 flex col j-c-c">
+		<img
+			alt="illustration"
+			class="quick-join-img"
+			src="../../../assets/images/quick-join-graphics.png"
+		/>
+	</div>
+	<div class="right-side w-100">
+		<form [formGroup]="quickJoinForm">
+			<h1 class="quick-join-label">Enter session details to start</h1>
+			<app-input-component
+				[inputAutocomplete]="'one-time-code'"
+				[inputLabel]="'Session ID'"
+				[inputPlaceholder]="'Enter Session ID here'"
+				[inputType]="'number'"
+				formControlName="sessionId"
+			></app-input-component>
+			<app-input-component
+				[inputAutocomplete]="'one-time-code'"
+				[inputLabel]="'Captioner Passcode'"
+				[inputPlaceholder]="'Your passcode here'"
+				[inputType]="'password'"
+				formControlName="captionerPasscode"
+			></app-input-component>
+			<app-button-component
+				[buttonDisabled]="quickJoinForm.invalid"
+				[buttonText]="'Go!'"
+				[buttonType]="'submit'"
+				[queryParams]="quickJoinForm.value"
+				[routerLink]="['/', session]"
+			></app-button-component>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+@import 'colors';
+@import 'shadows';
+
+button {
+	background: $blue-50;
+	border: 0;
+	border-radius: 8px;
+	box-shadow: $header;
+	color: white;
+	font-weight: 600;
+	min-width: 152px;
+	padding: 8px;
+	white-space: nowrap;
+
+	img {
+		height: 24px;
+		width: 24px;
+	}
+
+	&:hover {
+		background: $blue-60;
+		transition: background 200ms ease-in;
+	}
+}
+
+button.off {
+	background: $orange-40;
+
+	&:hover {
+		background: $orange-50;
+	}
+}
+
+button.off-white {
+	background: $white;
+	color: $blue-50;
+}
+
+button:disabled {
+	background: $gray-20;
+	color: $gray-60;
+}
+
+.white-btn {
+	background-color: $white;
+	color: $blue-50;
+
+	&:hover {
+		background: $gray-20;
+	}
+}

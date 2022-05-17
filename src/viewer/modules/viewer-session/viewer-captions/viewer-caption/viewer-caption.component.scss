@@ -1,0 +1,32 @@
+@import 'colors';
+
+:host {
+	margin: 0 12px 12px;
+}
+
+.card {
+	border-radius: 8px;
+	background-color: $white;
+	max-width: 800px;
+	padding: 8px 12px;
+	box-shadow:
+		0 2px 4px 2px rgb(107 107 107 / 4%),
+		0 4px 6px 4px rgb(68 68 68 / 4%);
+
+	.caption {
+		white-space: pre-line;
+		color: $gray-60;
+
+		&.last {
+			font-weight: 600;
+		}
+
+		&.final {
+			color: $gray-90;
+			font-weight: 400;
+			border-radius: 0;
+			background: unset;
+			padding: 0;
+		}
+	}
+}

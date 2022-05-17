@@ -1,0 +1,46 @@
+<div class="login flex col a-i-c">
+	<div class="flex row j-c-sb a-i-c w-100" style="margin-top: 12px">
+		<h1>Log in to join</h1>
+		<app-icon
+			(click)="dialogRef.close()"
+			[independent]="true"
+			[svg]="'close'"
+			style="margin-bottom: 32px"
+		></app-icon>
+	</div>
+	<form [formGroup]="loginForm" class="flex col">
+		<app-input-component
+			[errorMessage]="loginForm.controls.email.errors ? 'Invalid email' : ''"
+			[inputAutocomplete]="'username'"
+			[inputLabel]="'Email'"
+			[inputPlaceholder]="'myemail@outlook.com'"
+			[inputType]="'text'"
+			formControlName="email"
+		></app-input-component>
+		<app-input-component
+			[errorMessage]="
+				loginForm.controls.password.errors ? 'Incorrect password!' : ''
+			"
+			[inputAutocomplete]="'current-password'"
+			[inputLabel]="'Password'"
+			[inputPlaceholder]="'******'"
+			[inputType]="'password'"
+			formControlName="password"
+		></app-input-component>
+		<app-button-component
+			(click)="loginAndGo()"
+			[buttonDisabled]="awaitingLogin || !loginForm.valid"
+			[buttonText]="'Go!'"
+		>
+		</app-button-component>
+		<button class="forgot" type="button">
+			Forgot the password?
+			<span
+				(click)="dialogRef.close()"
+				[routerLink]="['/', resetRoute]"
+				class="reset"
+				>Reset</span
+			>
+		</button>
+	</form>
+</div>

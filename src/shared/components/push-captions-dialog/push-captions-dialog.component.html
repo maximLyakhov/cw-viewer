@@ -1,0 +1,42 @@
+<div [formGroup]="pushCaptionsForm" class="flex col gap push">
+	<div class="header flex row j-c-sb a-i-c">
+		<h3 class="mr-20">Push captions to video conference</h3>
+		<app-icon
+			(click)="dialogRef.close()"
+			[independent]="true"
+			[svg]="'close'"
+		></app-icon>
+	</div>
+	<app-input-component
+		[inputLabel]="'Token or URL'"
+		[inputPlaceholder]="'https://teams.captions.ms.com/***'"
+		class="token"
+		formControlName="url"
+	></app-input-component>
+	<div class="flex row a-i-c">
+		<app-input-component
+			[inputLabel]="'Line Length'"
+			[inputPlaceholder]="'32'"
+			[inputType]="'number'"
+			class="mr-20"
+			formControlName="lineLength"
+		></app-input-component>
+		<mat-checkbox class="mt-20" color="primary" formControlName="lineByLine">
+			Send captions line by line
+		</mat-checkbox>
+	</div>
+	<app-input-component
+		[inputLabel]="'Number of Lines'"
+		[inputPlaceholder]="'3'"
+		[inputType]="'number'"
+		formControlName="lineCount"
+	></app-input-component>
+	<div class="flex w-100 j-c-fe">
+		<app-small-button
+			(click)="pushCaptions()"
+			(keydown.enter)="pushCaptions()"
+			[buttonDisabled]="pushCaptionsForm.invalid"
+			[buttonText]="'Go!'"
+		></app-small-button>
+	</div>
+</div>

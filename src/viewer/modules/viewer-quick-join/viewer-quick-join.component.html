@@ -1,0 +1,46 @@
+<div class="quick-join flex row">
+	<div class="left-side w-100 flex col j-c-c">
+		<h3 class="desc">
+			<span class="name"> CaptionWorks Viewer </span>
+			<span class="regular"> allows you to watch captions in </span>
+			<span class="catch"> real time</span>
+			<span class="regular">
+				Enter your session code and hit Go! to start, or press Login for access
+				to your regular sessions.
+			</span>
+		</h3>
+		<img
+			alt="illustration"
+			class="quick-join-img"
+			src="../../assets/images/quick-join-graphics.png"
+		/>
+	</div>
+	<div class="right-side w-100">
+		<form [formGroup]="quickJoinForm">
+			<h1 class="quick-join-label">Quick join session</h1>
+			<app-input-component
+				(click)="clearPasscodeInput()"
+				[inputAutocomplete]="'one-time-code'"
+				[inputLabel]="'Session ID*'"
+				[inputPlaceholder]="'Enter Session ID here'"
+				[inputType]="'number'"
+				formControlName="sessionId"
+			></app-input-component>
+			<app-input-component
+				*ngIf="needToEnterPasscode | async"
+				[inputAutocomplete]="'one-time-code'"
+				[inputLabel]="'Booking Passcode'"
+				[inputPlaceholder]="'Your passcode here'"
+				[inputType]="'password'"
+				formControlName="bookingPasscode"
+			></app-input-component>
+			<app-button-component
+				(click)="clearPasscodeInput()"
+				[buttonDisabled]="quickJoinForm.invalid"
+				[buttonText]="'Go!'"
+				[queryParams]="quickJoinForm.value"
+				[routerLink]="['/', session]"
+			></app-button-component>
+		</form>
+	</div>
+</div>

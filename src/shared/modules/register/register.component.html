@@ -1,0 +1,123 @@
+<div class="register flex col a-i-c j-c-c">
+	<app-back-link class="a-s-fs"></app-back-link>
+	<h1 class="login a-s-fs">Register</h1>
+	<form [formGroup]="registerForm" class="flex col a-i-c">
+		<div class="flex row w-100 gap">
+			<app-input-component
+				[errorMessage]="
+					registerForm.controls.firstName.dirty &&
+					registerForm.controls.firstName.invalid
+						? 'First name is invalid'
+						: ''
+				"
+				[inputAutocomplete]="'name'"
+				[inputLabel]="'First Name'"
+				[inputPlaceholder]="'Enter your first name'"
+				[inputType]="'text'"
+				formControlName="firstName"
+			></app-input-component>
+			<app-input-component
+				[errorMessage]="
+					registerForm.controls.lastName.dirty &&
+					registerForm.controls.lastName.invalid
+						? 'Last name is invalid'
+						: ''
+				"
+				[inputAutocomplete]="'family-name'"
+				[inputLabel]="'Last Name'"
+				[inputPlaceholder]="'Enter your last name'"
+				[inputType]="'text'"
+				formControlName="lastName"
+			></app-input-component>
+		</div>
+
+		<app-input-component
+			[errorMessage]="
+				registerForm.controls.email.errors ? 'Email is not correct' : ''
+			"
+			[inputAutocomplete]="'email'"
+			[inputLabel]="'Email'"
+			[inputPlaceholder]="'Enter your email here'"
+			[inputType]="'text'"
+			class="w-100"
+			formControlName="email"
+		></app-input-component>
+
+		<div class="flex row w-100">
+			<div *ngIf="regions | async" class="text-input-block w-100 mb-20">
+				<div class="text-input-label fs-xs">Timezone</div>
+				<div class="text-input flex row gap">
+					<ng-select
+						(change)="chooseRegion($event)"
+						[clearable]="false"
+						[items]="regions | async"
+						[notFoundText]="'Loading regions...'"
+						[placeholder]="'Region'"
+						bindLabel="region"
+						class="select region"
+						formControlName="region"
+					></ng-select>
+					<ng-select
+						*ngIf="registerForm.controls.region.value && cities"
+						[clearable]="false"
+						[items]="cities | async"
+						class="select city"
+						formControlName="timezone"
+						placeholder="City"
+					></ng-select>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex row gap w-100">
+			<app-input-component
+				[errorMessage]="
+					registerForm.controls.password.dirty &&
+					!(
+						registerForm.controls.password.value ===
+						registerForm.controls.repassword.value
+					)
+						? 'Passwords are not the same'
+						: ''
+				"
+				[inputAutocomplete]="'new-password'"
+				[inputLabel]="'Password (at least 6 characters)'"
+				[inputPlaceholder]="'Enter the password'"
+				[inputType]="'password'"
+				formControlName="password"
+			></app-input-component>
+			<app-input-component
+				[errorMessage]="
+					registerForm.controls.repassword.dirty &&
+					!(
+						registerForm.controls.password.value ===
+						registerForm.controls.repassword.value
+					)
+						? 'Passwords are not the same'
+						: ''
+				"
+				[inputAutocomplete]="'new-password'"
+				[inputLabel]="'Confirm Password'"
+				[inputPlaceholder]="'Re-enter the password'"
+				[inputType]="'password'"
+				formControlName="repassword"
+			></app-input-component>
+		</div>
+
+		<app-button-component
+			(click)="register()"
+			[buttonDisabled]="
+				registerForm.invalid ||
+				!(
+					registerForm.controls.password.value ===
+					registerForm.controls.repassword.value
+				)
+			"
+			[buttonText]="'Create profile'"
+		></app-button-component>
+		<button class="with-us">
+			Already with us?
+			<span [routerLink]="[loginRoute]" class="login">Login</span>
+		</button>
+	</form>
+</div>

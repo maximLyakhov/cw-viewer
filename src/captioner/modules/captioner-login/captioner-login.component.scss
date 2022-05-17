@@ -1,0 +1,31 @@
+@import 'colors';
+
+.login {
+	.left-side {
+		margin-left: 148px;
+		max-width: 448px;
+	}
+
+	.right-side {
+		.illustration {
+			width: 100%;
+			aspect-ratio: auto;
+		}
+	}
+}
+
+.forgot {
+	margin-top: 20px;
+	padding: 16px;
+	background-color: $white;
+	color: $gray-60;
+	border: 0;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 24px;
+
+	.reset {
+		color: $blue-50;
+		cursor: pointer;
+	}
+}

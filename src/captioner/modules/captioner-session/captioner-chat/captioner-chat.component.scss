@@ -1,0 +1,117 @@
+@import 'colors';
+@import 'scrollbars';
+@import 'shadows';
+
+:host {
+	outline: 1px solid $gray-30;
+	border-radius: 8px;
+	box-shadow: $captions-shadow;
+}
+
+.open-close-container {
+	background: $white;
+	border: 1px solid $gray-20;
+	border-radius: 8px;
+
+	.icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	.chat-header {
+		margin-bottom: 12px;
+		border-bottom: 1px solid $gray-20;
+		min-height: 64px;
+
+		.close-button-container {
+			justify-self: flex-end;
+			margin: 0 -12px 0 6px;
+			z-index: 1;
+		}
+
+		.icon {
+			background: $white;
+			border-radius: 4px;
+			border: 1px solid $gray-20;
+		}
+	}
+
+	.messages {
+		@include scrollbars(4px, $gray-20);
+
+		overflow-y: scroll;
+		overflow-x: hidden;
+		max-width: calc(100% - 48px);
+		padding-right: 8px;
+
+		.message {
+			max-width: 100%;
+			margin-top: 16px;
+			width: max-content;
+
+			$padding: 8px;
+
+			.message-text {
+				width: calc(100% - (#{$padding} * 2));
+				padding: $padding;
+				border-radius: 4px;
+				font-weight: 400;
+				background: $gray-20;
+				word-break: break-word;
+			}
+
+			.time {
+				color: $gray-50;
+			}
+
+			&.self {
+				align-self: flex-end;
+
+				.time {
+					align-self: flex-end;
+				}
+
+				.message-text {
+					background: $orange-10;
+				}
+			}
+
+			&.unread {
+				border-right: 2px dotted $orange-20;
+				padding-right: 4px;
+			}
+		}
+	}
+
+	.chat-bottom {
+		border-top: 1px solid $gray-20;
+		padding-top: 20px;
+		margin: 12px 0 20px;
+
+		.input-wrap {
+			outline: 1px solid $blue-20;
+			border-radius: 8px;
+			width: calc(100% - 40px);
+
+			.input-block {
+				overflow: hidden;
+			}
+
+			input {
+				outline: 0;
+				border: 0;
+				color: $gray-90;
+				font-size: 20px;
+				line-height: 24px;
+				padding: 16px 8px 16px 0;
+				overflow: hidden;
+				width: 224px;
+				caret-color: $blue-20;
+
+				&::placeholder {
+					color: $gray-50;
+				}
+			}
+		}
+	}
+}

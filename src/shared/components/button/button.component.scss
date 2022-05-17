@@ -1,0 +1,29 @@
+@import 'colors';
+
+button {
+	background-color: $blue-50;
+	border: 0;
+	border-radius: 8px;
+	color: $white;
+	cursor: pointer;
+	font-weight: 600;
+	gap: 8px;
+	height: 56px;
+	transition: background-color 200ms ease-in;
+	width: 448px;
+
+	&:hover {
+		background-color: $blue-60;
+		transition: background-color 200ms ease-in;
+	}
+
+	&:disabled {
+		background-color: $blue-20;
+		cursor: not-allowed;
+	}
+
+	&:focus-visible {
+		outline: 2px solid $blue-50;
+		outline-offset: 2px;
+	}
+}

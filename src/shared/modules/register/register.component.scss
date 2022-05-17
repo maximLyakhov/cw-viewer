@@ -1,0 +1,42 @@
+@import 'colors';
+@import 'scrollbars';
+
+::ng-deep {
+	.ng-select-container {
+		border-color: #adc8ff !important;
+		height: 56px !important;
+		border-radius: 8px !important;
+	}
+}
+
+.register {
+	padding-top: 32px;
+
+	.text-input-block {
+		.text-input-label {
+			margin-bottom: 2px;
+			color: $gray-60;
+			font-weight: 600;
+		}
+
+		.select {
+			flex: 50%;
+		}
+	}
+}
+
+.with-us {
+	margin-top: 20px;
+	padding: 16px;
+	background-color: $white;
+	color: $gray-60;
+	border: 0;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 24px;
+
+	.login {
+		cursor: pointer;
+		color: $blue-50;
+	}
+}

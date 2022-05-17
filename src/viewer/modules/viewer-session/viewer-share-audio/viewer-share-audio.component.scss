@@ -1,0 +1,18 @@
+@import 'colors';
+
+.access-btn {
+	::ng-deep button.flex.row {
+		width: max-content;
+		padding: 0 16px;
+
+		svg {
+			stroke: white;
+		}
+	}
+}
+
+.stop-feeding {
+	::ng-deep button.flex.row {
+		background-color: $orange-40;
+	}
+}

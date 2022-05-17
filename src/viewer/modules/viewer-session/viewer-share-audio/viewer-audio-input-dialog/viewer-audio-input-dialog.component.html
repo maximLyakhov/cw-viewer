@@ -1,0 +1,34 @@
+<div class="audio-input-dialog">
+	<div class="flex col">
+		<div class="header flex row j-c-sb">
+			<h3 class="confirm-header mr-20">📍Share audio</h3>
+			<app-icon
+				[svg]="'close'"
+				class="cross-reject a-s-c"
+				(click)="dialogRef.close()"
+			></app-icon>
+		</div>
+		<div class="flex col">
+			<span class="confirm-text fs-l">
+				Sharing your microphone audio allows the captioner to hear your meeting
+				if you're not using Zoom, Teams, or similar.
+			</span>
+		</div>
+		<app-audio-input-select
+			(chosenAudioDevice)="audioDeviceControl.setValue($event)"
+		></app-audio-input-select>
+	</div>
+	<div class="actions flex row j-c-sb">
+		<app-small-button
+			[inverted]="true"
+			[buttonText]="'Cancel'"
+			(click)="dialogRef.close()"
+		></app-small-button>
+		<app-small-button
+			[inverted]="false"
+			[buttonText]="'Share'"
+			[buttonDisabled]="audioDeviceControl.invalid"
+			(click)="dialogRef.close({input: this.audioDeviceControl.value})"
+		></app-small-button>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+:host {
+	display: flex;
+}
+
+:host,
+.icon {
+	height: 24px;
+	width: 24px;
+}
+
+.independent {
+	cursor: pointer;
+}

@@ -1,0 +1,23 @@
+@import 'colors';
+@import 'spacings';
+
+:host {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-grow: 1;
+}
+
+.viewer {
+	background: $gray-20;
+
+	.toolbar {
+		margin: $gap 32px;
+	}
+
+	.main {
+		margin: 0 32px $gap;
+		max-height: calc(100vh - 60px - 48px - 140px);
+		gap: 28px;
+	}
+}

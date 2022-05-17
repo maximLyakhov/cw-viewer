@@ -1,0 +1,57 @@
+@import 'colors';
+
+.text-input-block {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+
+	.input-error,
+	.text-input-label {
+		margin-bottom: 2px;
+	}
+
+	.text-input-label {
+		color: $gray-60;
+		font-weight: 600;
+	}
+
+	.text-input {
+		border-radius: 8px;
+		padding: 15px 16px;
+	}
+
+	.input-error {
+		margin: 12px 0;
+		color: $orange-50;
+
+		.point {
+			background: $orange-50;
+			height: 8px;
+			width: 8px;
+			border-radius: 50%;
+			margin-right: 4px;
+		}
+	}
+
+	input {
+		border: 1px solid $blue-20;
+
+		&:focus-visible {
+			background: $blue-10;
+			border: 1px solid $blue-20;
+			outline: 0;
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			background: $gray-10;
+			color: $gray-50;
+			border: 1px solid $gray-20;
+		}
+
+		&.error {
+			border: 1px solid $orange-20;
+			background: $orange-10;
+		}
+	}
+}

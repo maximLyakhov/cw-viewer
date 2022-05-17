@@ -1,0 +1,10 @@
+<footer class="flex row j-c-sb a-i-c">
+	<div class="left-side flex">
+		<span> © All rights reserved, CaptionWorks Pty Ltd </span>
+	</div>
+	<div class="right-side flex">
+		<span *ngFor="let link of links; let last = last">
+			{{ link.title }}
+		</span>
+	</div>
+</footer>

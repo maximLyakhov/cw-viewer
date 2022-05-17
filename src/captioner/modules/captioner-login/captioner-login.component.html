@@ -1,0 +1,42 @@
+<div class="login flex row a-i-c">
+	<div class="left-side">
+		<h1>Log in to start captioning</h1>
+		<form [formGroup]="loginForm" class="flex col">
+			<app-input-component
+				formControlName="email"
+				[inputLabel]="'Email'"
+				[inputType]="'text'"
+				[inputPlaceholder]="'myemail@outlook.com'"
+				[errorMessage]="loginForm.controls.email.errors ? 'Invalid email' : ''"
+				[inputAutocomplete]="'username'"
+			></app-input-component>
+			<app-input-component
+				formControlName="password"
+				[inputType]="'password'"
+				[inputLabel]="'Password'"
+				[inputPlaceholder]="'******'"
+				[errorMessage]="
+					loginForm.controls.password.errors ? 'Incorrect password!' : ''
+				"
+				[inputAutocomplete]="'current-password'"
+			></app-input-component>
+			<app-button-component
+				[buttonDisabled]="awaitingLogin || !loginForm.valid"
+				[buttonText]="'Go!'"
+				(click)="loginAndGo()"
+			>
+			</app-button-component>
+			<button class="forgot">
+				Forgot the password?
+				<span class="reset" [routerLink]="['/', resetRoute]">Reset</span>
+			</button>
+		</form>
+	</div>
+	<div class="right-side">
+		<img
+			class="illustration"
+			src="../../../assets/images/mock-img.png"
+			alt="illustration"
+		/>
+	</div>
+</div>

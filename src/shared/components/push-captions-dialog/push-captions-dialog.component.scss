@@ -1,0 +1,17 @@
+.push {
+	app-input-component {
+		input.text-input {
+			margin-bottom: 0;
+		}
+
+		.text-input-block {
+			margin-bottom: 0;
+		}
+
+		&:not(.token) {
+			input {
+				width: 200px;
+			}
+		}
+	}
+}

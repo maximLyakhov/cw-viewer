@@ -1,0 +1,17 @@
+<div class="flex col gap confirm">
+	<h3>Are you sure you want to cancel?</h3>
+	<div class="flex row gap j-c-fe">
+		<app-small-button
+			(click)="sure()"
+			[buttonText]="'Yes'"
+			[inverted]="true"
+			[small]="true"
+		></app-small-button>
+		<app-small-button
+			(click)="pleaseNo()"
+			[buttonText]="'No'"
+			[inverted]="false"
+			[small]="true"
+		></app-small-button>
+	</div>
+</div>

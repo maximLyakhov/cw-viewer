@@ -1,0 +1,16 @@
+<div *ngIf="!feedsAudio; else stopFeeding">
+	<app-button-component
+		class="access-btn"
+		(click)="shareAudio()"
+		[buttonText]="'Share audio with Captioner'"
+		[buttonIcon]="'viewer-mic-off'"
+	></app-button-component>
+</div>
+<ng-template #stopFeeding>
+	<app-button-component
+		class="access-btn stop-feeding"
+		(click)="stopAudio()"
+		[buttonText]="'Turn off sharing'"
+		[buttonIcon]="'viewer-mic-on'"
+	></app-button-component>
+</ng-template>

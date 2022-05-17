@@ -1,0 +1,25 @@
+<div
+	*ngIf="sessionId && (sessionInfo$ | async) as info"
+	class="captioner flex col w-100"
+>
+	<div class="toolbar flex row j-c-sb">
+		<div class="session flex col">
+			<h3>{{ info.title }}</h3>
+			<span>SessionID: {{ sessionId }}</span>
+		</div>
+
+		<div class="flex row">
+			<div class="buttons flex row">
+				<app-captioner-push-captions></app-captioner-push-captions>
+				<app-captioner-speaker-audio></app-captioner-speaker-audio>
+				<app-captioner-respeaking></app-captioner-respeaking>
+				<app-captioner-auto-captioning></app-captioner-auto-captioning>
+			</div>
+		</div>
+	</div>
+
+	<div class="main flex row h-100">
+		<app-captioner-chat></app-captioner-chat>
+		<app-captioner-captions></app-captioner-captions>
+	</div>
+</div>

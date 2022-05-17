@@ -1,0 +1,41 @@
+@import 'colors';
+@import 'scrollbars';
+
+:host {
+	width: 100%;
+}
+
+.macro-bar {
+	border-bottom: 1px solid $gray-20;
+
+	.macros {
+		@include scrollbars(4px, $gray-20);
+
+		height: 64px;
+		overflow-x: auto;
+		overflow-y: hidden;
+
+		.macro {
+			background: $gray-20;
+			border-radius: 8px;
+			color: $blue-50;
+			cursor: pointer;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 24px;
+			margin: 12px;
+			min-width: max-content;
+			padding: 8px 12px;
+
+			&.disabled {
+				color: $gray-50;
+			}
+		}
+	}
+
+	.macro-menu {
+		border-left: 1px solid $gray-20;
+		cursor: pointer;
+		padding: 12px;
+	}
+}

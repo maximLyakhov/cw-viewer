@@ -1,0 +1,77 @@
+<header class="header flex row j-c-sb a-i-c">
+	<div [routerLink]="['/', appRoute.QuickJoin]" class="left-section flex">
+		<img
+			alt="logo"
+			class="home"
+			height="40"
+			src="../../../assets/svg/logo-lead.svg"
+			width="192"
+		/>
+	</div>
+
+	<div class="right-section section">
+		<div *ngIf="userInfo$ | async as info; else noAuth" class="flex h-100">
+			<app-small-button
+				(click)="openSettings()"
+				[buttonText]="'Settings'"
+				[icon]="'settings'"
+				[inverted]="true"
+				style="margin-right: 16px"
+			></app-small-button>
+			<div class="flex row a-i-c" style="gap: 16px">
+				<div class="logged">
+					<span class="logged-label"> Logged in as </span>
+					<span class="logged-email">
+						<span *ngIf="info.firstName && info.lastName">
+							<span>
+								{{ info.firstName }}
+							</span>
+							<span>
+								{{ info.lastName }}
+							</span>
+						</span>
+						<span *ngIf="!info.lastName && !info.firstName && info.email">
+							<span>
+								{{ info.email }}
+							</span>
+						</span>
+					</span>
+				</div>
+				<app-small-button
+					(click)="leaveSession()"
+					*ngIf="sessionInfo$ | async"
+					[buttonText]="'Leave session'"
+					[icon]="'chevron-left'"
+					[inverted]="true"
+				></app-small-button>
+				<app-small-button
+					(click)="confirmLogout()"
+					[buttonText]="'Logout'"
+					[icon]="'logout'"
+					[inverted]="true"
+				></app-small-button>
+			</div>
+		</div>
+		<ng-template #noAuth>
+			<div class="flex row a-i-c" style="gap: 16px">
+				<app-small-button
+					(click)="leaveSession()"
+					*ngIf="sessionInfo$ | async"
+					[buttonText]="'Leave session'"
+					[icon]="'chevron-left'"
+					[inverted]="true"
+				></app-small-button>
+				<app-small-button
+					[buttonText]="'Register'"
+					[inverted]="true"
+					[routerLink]="['/', appRoute.Register]"
+				></app-small-button>
+				<app-small-button
+					[buttonText]="'Log in'"
+					[inverted]="false"
+					[routerLink]="['/', appRoute.Login]"
+				></app-small-button>
+			</div>
+		</ng-template>
+	</div>
+</header>

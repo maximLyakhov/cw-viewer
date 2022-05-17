@@ -1,0 +1,19 @@
+<button
+	(click)="openDialog()"
+	*ngIf="!pushingCaptions; else stop"
+	class="fs-xs white-btn off-white"
+>
+	<span class="flex col j-c-c a-i-c">
+		<app-icon svg="pushing-captioner"></app-icon>
+		<span>Push captions</span>
+	</span>
+</button>
+
+<ng-template #stop>
+	<button (click)="stopPushing()" class="off">
+		<span class="flex col j-c-c a-i-c">
+			<app-icon svg="pushing"></app-icon>
+			<span>Stop pushing captions</span>
+		</span>
+	</button>
+</ng-template>

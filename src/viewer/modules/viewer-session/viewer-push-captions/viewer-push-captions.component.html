@@ -1,0 +1,16 @@
+<app-button-component
+	(click)="openDialog()"
+	*ngIf="!pushingCaptions; else stop"
+	buttonIcon="pushing"
+	buttonText="Push captions"
+	class="pushing-button push"
+></app-button-component>
+
+<ng-template #stop>
+	<app-button-component
+		(click)="stopPushing()"
+		buttonIcon="pushing"
+		buttonText="Stop pushing captions"
+		class="pushing-button pushing"
+	></app-button-component>
+</ng-template>

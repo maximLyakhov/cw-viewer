@@ -1,0 +1,31 @@
+<div
+	*ngIf="audioDevices.length > 0; else error"
+	class="flex col w-100 mt-20 mb-20"
+>
+	<label class="fs-xs flex" for="ng-select" style="margin: 4px 0">
+		Audio Source
+	</label>
+	<ng-select
+		(change)="chosenAudioDevice.emit($event)"
+		[clearable]="false"
+		[formControl]="audioDeviceControl"
+		[items]="audioDevices"
+		[searchable]="false"
+		bindLabel="label"
+		class="w-100"
+		id="ng-select"
+		placeholder="Select audio source"
+	></ng-select>
+	<mat-checkbox
+		(change)="selectionSaved.emit($event)"
+		*ngIf="showSave"
+		[formControl]="saveDeviceControl"
+		class="mt-20"
+		color="primary"
+	>
+		Make default
+	</mat-checkbox>
+</div>
+<ng-template #error>
+	<div class="fs-m mt-20 mb-20">You have no available audio devices.</div>
+</ng-template>

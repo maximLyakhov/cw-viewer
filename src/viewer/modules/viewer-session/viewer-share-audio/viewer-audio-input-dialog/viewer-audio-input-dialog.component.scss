@@ -1,0 +1,32 @@
+@import 'colors';
+@import 'spacings';
+
+::ng-deep {
+	.mat-dialog-container {
+		overflow: visible;
+	}
+}
+
+.audio-input-dialog {
+	min-width: 320px;
+	height: max-content;
+	width: max-content;
+	max-width: 450px;
+
+	.header {
+		margin-bottom: 16px;
+	}
+
+	.cross-reject {
+		cursor: pointer;
+		color: $blue-50;
+	}
+
+	.confirm-text {
+		color: $gray-70;
+	}
+
+	.actions {
+		margin-top: $m20;
+	}
+}

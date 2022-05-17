@@ -1,0 +1,17 @@
+<div class="viewer flex col w-100">
+	<div class="toolbar flex row j-c-sb">
+		<div class="session-info flex col">
+			<h3 *ngIf="sessionInfo$ | async as info">{{ info.title }}</h3>
+			<span>SessionID: {{ sessionId$ | async }}</span>
+		</div>
+		<div *ngIf="logged$ | async" class="flex row gap a-i-c">
+			<app-viewer-push-captions></app-viewer-push-captions>
+			<app-viewer-share-audio></app-viewer-share-audio>
+		</div>
+	</div>
+
+	<div *ngIf="sessionId$ | async" class="main flex row gap h-100">
+		<app-viewer-chat *ngIf="logged$ | async"></app-viewer-chat>
+		<app-viewer-captions></app-viewer-captions>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="reset">
+	<app-back-link [destination]="backToLogin"></app-back-link>
+	<h1>Password reset</h1>
+	<div class="instructions fs-l">
+		Enter your email, and we'll send you instructions on how to reset your
+		password
+	</div>
+	<form [formGroup]="resetForm" class="mb-20">
+		<app-input-component
+			[errorMessage]="
+				resetForm.controls.email.invalid ? 'Invalid email format' : ''
+			"
+			[inputAutocomplete]="'username'"
+			[inputLabel]="'Email'"
+			[inputPlaceholder]="'myemail@outlook.com'"
+			[inputType]="'text'"
+			formControlName="email"
+		></app-input-component>
+	</form>
+	<app-button-component
+		(click)="startReset()"
+		[buttonDisabled]="!!resetForm.controls.email.invalid || disable"
+		[buttonText]="'Send'"
+		class="mt-20"
+	></app-button-component>
+</div>

@@ -1,0 +1,11 @@
+@import 'colors';
+@import 'spacings';
+
+.reset {
+	width: 448px;
+
+	.instructions {
+		color: $gray-70;
+		margin-bottom: $m20;
+	}
+}

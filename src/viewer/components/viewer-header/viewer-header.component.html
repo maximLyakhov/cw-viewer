@@ -1,0 +1,80 @@
+<header class="header flex row j-c-sb">
+	<div [routerLink]="['/', quickJoin]" class="left-section flex">
+		<img
+			alt="logo"
+			class="home"
+			height="40"
+			src="../../../assets/svg/logo-lead.svg"
+			width="192"
+		/>
+	</div>
+
+	<div class="right-section section">
+		<div
+			*ngIf="(logged$ | async) && (userInfo$ | async) as info; else noAuth"
+			class="flex h-100"
+		>
+			<div class="flex row a-i-c" style="gap: 16px">
+				<div
+					*ngIf="(status$ | async)?.captionerStarted?.name as captName"
+					class="logged"
+				>
+					<span class="logged-label"> Captioning by </span>
+					<span class="logged-email">
+						<span>
+							<span>{{ captName }}</span>
+						</span>
+					</span>
+				</div>
+				<div class="logged">
+					<span class="logged-label"> Logged in as </span>
+					<span class="logged-email">
+						<span *ngIf="info.firstName && info.lastName">
+							<span>{{ info.firstName }}</span>
+							<span>{{ info.lastName }}</span>
+						</span>
+						<span *ngIf="!info.lastName && !info.firstName && info.email">
+							<span>{{ info.email }}</span>
+						</span>
+					</span>
+				</div>
+				<app-small-button
+					(click)="leaveSession()"
+					*ngIf="sessionInfo$ | async"
+					[buttonText]="'Leave session'"
+					[icon]="'chevron-left'"
+					[inverted]="true"
+				></app-small-button>
+				<app-small-button
+					(click)="confirmLogout()"
+					[buttonText]="'Logout'"
+					[icon]="'logout'"
+					[inverted]="true"
+				></app-small-button>
+			</div>
+		</div>
+		<ng-template #noAuth>
+			<div class="flex row a-i-c" style="gap: 16px">
+				<app-small-button
+					(click)="leaveSession()"
+					*ngIf="sessionInfo$ | async"
+					[buttonText]="'Leave session'"
+					[icon]="'chevron-left'"
+					[inverted]="true"
+				></app-small-button>
+				<app-small-button
+					*ngIf="(anonymous | async) === false"
+					[buttonText]="'Register'"
+					[inverted]="true"
+					[routerLink]="['/', register]"
+				></app-small-button>
+				<app-small-button
+					(click)="login()"
+					*ngIf="(anonymous | async) === false"
+					[buttonText]="'Log in'"
+					[inverted]="false"
+				></app-small-button>
+			</div>
+		</ng-template>
+	</div>
+</header>

@@ -1,0 +1,21 @@
+<button
+	class="fs-xs"
+	[class.off]="responds"
+	(click)="!responds ? share() : stop()"
+	[disabled]="disabled"
+>
+	<div class="flex col j-c-c a-i-c" *ngIf="!responds; else speakerOff">
+		<app-icon [svg]="'volume-off'"></app-icon>
+		<span>Turn speaker audio on</span>
+	</div>
+	<ng-template #speakerOff>
+		<div class="flex col j-c-c a-i-c">
+			<img
+				class="icon"
+				src="../../../../../assets/animations/audio-min.gif"
+				alt="audio is on"
+			/>
+			<span>Turn speaker audio off</span>
+		</div>
+	</ng-template>
+</button>

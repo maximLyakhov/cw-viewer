@@ -1,0 +1,46 @@
+@import 'colors';
+
+:host {
+	margin: 0 32px;
+}
+
+.quick-join {
+	.left-side {
+		flex: 1 1 50%;
+		max-width: 448px;
+
+		.desc {
+			font-size: 24px;
+			font-weight: 600;
+			line-height: 36px;
+
+			.name {
+				color: $gray-90;
+			}
+
+			.regular {
+				color: $gray-70;
+			}
+
+			.catch {
+				color: $orange-40;
+
+				&::after {
+					color: $gray-70;
+					content: '.';
+				}
+			}
+		}
+
+		.quick-join-img {
+			aspect-ratio: auto;
+			width: 100%;
+		}
+	}
+
+	.right-side {
+		flex: 1 1 50%;
+		margin-left: 52px;
+		max-width: 448px;
+	}
+}

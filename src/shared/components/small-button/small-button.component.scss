@@ -1,0 +1,43 @@
+@import 'colors';
+
+.inverted {
+	background: $blue-10;
+	color: $blue-50;
+}
+
+.mr-8 {
+	margin-right: 8px;
+}
+
+.small {
+	font-size: 14px;
+	line-height: 24px;
+	padding: 4px 16px;
+}
+
+.normal {
+	background: $blue-50;
+	color: $white;
+}
+
+button {
+	border-radius: 8px;
+	border: 0;
+	cursor: pointer;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 24px;
+	font-family: inherit;
+	padding: 8px 16px;
+
+	&:disabled {
+		background-color: $gray-10;
+		color: $gray-50;
+		cursor: not-allowed;
+	}
+
+	&:focus-visible {
+		outline: 2px solid $blue-50;
+		outline-offset: 2px;
+	}
+}

@@ -1,0 +1,52 @@
+@import 'colors';
+
+h1 {
+	color: $gray-80;
+	display: flex;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 900;
+	line-height: 48px;
+	margin: 0 0 32px;
+}
+
+h3 {
+	color: $gray-80;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 36px;
+	margin: 0;
+}
+
+.fs-xs {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.fs-footer {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.fs-s {
+	font-size: 17px;
+	line-height: 24px;
+}
+
+.fs-m {
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.fs-l {
+	font-size: 20px;
+	line-height: 32px;
+}
+
+.fw-6 {
+	font-weight: 600;
+}
+
+.word-nowrap {
+	white-space: nowrap;
+}

@@ -1,0 +1,11 @@
+<button
+	[class.inverted]="inverted"
+	[class.normal]="!inverted"
+	[class.small]="small"
+	[disabled]="buttonDisabled"
+	class="flex row a-i-c j-c-c"
+	type="button"
+>
+	<app-icon *ngIf="icon" [svg]="icon" class="mr-8"></app-icon>
+	<span class="word-nowrap">{{ buttonText }}</span>
+</button>

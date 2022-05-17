@@ -1,0 +1,9 @@
+package.json
+package-lock.json
+dist
+.angular
+.vscode
+.idea
+.husky
+build-viewer
+build-captioner

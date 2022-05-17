@@ -1,0 +1,30 @@
+<button
+	(click)="startAutoCaptions()"
+	*ngIf="autoCaptioning && !autoCaptioningOn; else disabled"
+	class="fs-xs white-btn off-white"
+>
+	<span class="flex col j-c-c a-i-c">
+		<app-icon [svg]="'auto-captions-on'"></app-icon>
+		<span>Start autocaptions</span>
+	</span>
+</button>
+
+<button
+	(click)="stopAutoCaptions()"
+	*ngIf="autoCaptioning && autoCaptioningOn"
+	class="fs-xs white-btn off-white"
+>
+	<span class="flex col j-c-c a-i-c">
+		<app-icon [svg]="'auto-captions-off'"></app-icon>
+		<span>Stop autocaptions</span>
+	</span>
+</button>
+
+<ng-template #disabled>
+	<button [disabled]="true" class="fs-xs white-btn">
+		<span class="flex col j-c-c a-i-c">
+			<app-icon [svg]="'auto-captions-disabled'"></app-icon>
+			<span>Autocaptions disabled</span>
+		</span>
+	</button>
+</ng-template>

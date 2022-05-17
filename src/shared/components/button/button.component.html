@@ -1,0 +1,10 @@
+<button
+	[disabled]="buttonDisabled"
+	[type]="buttonType"
+	class="flex row a-i-c j-c-c fs-s"
+>
+	<app-icon *ngIf="buttonIcon" [svg]="buttonIcon"></app-icon>
+	<span>
+		{{ buttonText }}
+	</span>
+</button>

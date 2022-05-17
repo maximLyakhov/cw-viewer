@@ -1,0 +1,83 @@
+@import 'colors';
+@import 'scrollbars';
+
+.pl-8 {
+	padding-left: 8px
+}
+
+.header,
+h4 {
+	border-bottom: 1px solid $gray-30;
+	padding-bottom: 16px;
+}
+
+.main {
+	min-width: 800px;
+}
+
+input {
+	height: 32px;
+	width: 217px;
+}
+
+.menu {
+	width: 464px;
+}
+
+.edit-header {
+	margin-bottom: 8px;
+}
+
+textarea {
+	@include scrollbars(4px, $blue-20);
+
+	font-family: inherit;
+	height: 248px;
+	resize: none;
+	width: 464px;
+}
+
+input,
+textarea {
+	border: 1px solid $blue-20;
+	border-radius: 4px;
+	padding: 2px 4px;
+
+	&:focus-visible {
+		background: $blue-10;
+		border: 1px solid $blue-50;
+		border-radius: 4px;
+		outline: none;
+	}
+}
+
+.entry-row {
+	border: 1px solid $blue-20;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	padding: 8px;
+}
+
+.chosen {
+	background: $blue-10;
+}
+
+.not-saved {
+	background: $gray-20;
+}
+
+:host::ng-deep app-icon {
+	&.button {
+		background: $blue-10;
+		border-radius: 8px;
+		padding: 4px;
+
+		&.add {
+			background: $blue-10;
+
+			img {
+				transform: rotate(45deg);
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<ng-container
+	*ngFor="let word of sentence; last as last; trackBy: tracking"
+	[ngSwitch]="word.editMode"
+>
+	<span
+		*ngSwitchDefault
+		(click)="control.setValue(word.txt); startEditCaption(word)"
+		[class.last]="last"
+		[class.final]="word.final"
+		class="fs-l"
+	>
+		{{ word.txt }}
+	</span>
+	<input
+		autofocus="autofocus"
+		*ngSwitchCase="true"
+		(keydown.enter)="updateCaption(word.chunkId)"
+		class="fs-l input"
+		[size]="word.txt.length"
+		[formControl]="control"
+		[value]="word.txt"
+	/>
+</ng-container>

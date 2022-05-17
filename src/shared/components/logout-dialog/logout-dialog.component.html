@@ -1,0 +1,16 @@
+<div class="fs-m">Are you sure you want to log out?</div>
+<div class="flex row j-c-fe gap mt-20">
+	<app-small-button
+		(click)="close()"
+		[autofocus]="true"
+		[buttonText]="'Cancel'"
+		[inverted]="false"
+		[small]="true"
+	></app-small-button>
+	<app-small-button
+		(click)="accept()"
+		[buttonText]="'Yes'"
+		[inverted]="true"
+		[small]="true"
+	></app-small-button>
+</div>

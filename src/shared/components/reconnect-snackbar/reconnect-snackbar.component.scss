@@ -1,0 +1,22 @@
+@import 'colors';
+
+::ng-deep {
+	.snack {
+		background: $white;
+
+		.message {
+			color: $gray-90;
+		}
+
+		.action {
+			margin-left: 20px;
+			height: min-content;
+			border: 0;
+			background: $blue-50;
+			color: $white;
+			border-radius: 8px;
+			padding: 8px 16px;
+			font-weight: 600;
+		}
+	}
+}

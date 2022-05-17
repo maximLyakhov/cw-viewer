@@ -1,0 +1,24 @@
+<form [formGroup]="changeForm">
+	<app-input-component
+		[inputAutocomplete]="'new-password'"
+		[inputLabel]="'New password'"
+		[inputPlaceholder]="'New password'"
+		[inputType]="'password'"
+		formControlName="password"
+	></app-input-component>
+	<app-input-component
+		[inputAutocomplete]="'new-password'"
+		[inputLabel]="'Confirm new password'"
+		[inputPlaceholder]="'Confirm new password'"
+		[inputType]="'password'"
+		formControlName="confirm"
+	></app-input-component>
+	<app-button-component
+		(click)="changePassword()"
+		[buttonDisabled]="
+			changeForm.invalid ||
+			changeForm.controls.password.value !== changeForm.controls.confirm.value
+		"
+		[buttonText]="'Change password'"
+	></app-button-component>
+</form>

@@ -1,0 +1,45 @@
+@import 'constant-heights';
+
+footer {
+	outline: 1px solid rgb(221 221 221 / 100%);
+	width: 100vw;
+	height: $footer-height;
+
+	.left-side {
+		height: 100%;
+
+		span {
+			cursor: default;
+			color: rgb(95 95 95 / 100%);
+			font-size: 12px;
+			line-height: 16px;
+			margin: auto 32px;
+
+			@media only screen and (max-width: 850px) {
+				margin: 8px 16px 0;
+			}
+		}
+	}
+
+	.right-side {
+		margin-right: 32px;
+
+		span {
+			color: rgb(95 95 95 / 100%);
+			font-size: 14px;
+			line-height: 24px;
+			font-weight: 600;
+			margin: 8px;
+			cursor: pointer;
+
+			&:nth-of-type(4) {
+				cursor: default;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 850px) {
+		flex-direction: column;
+		height: unset;
+	}
+}

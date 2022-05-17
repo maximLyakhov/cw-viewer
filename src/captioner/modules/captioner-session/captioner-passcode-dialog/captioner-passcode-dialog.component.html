@@ -1,0 +1,25 @@
+<div>
+	<h3 class="title">Please provide captioner passcode for this session</h3>
+	<app-input-component
+		class="flex mt-20"
+		(keydown.enter)="dialogRef.close(passcodeControl.value)"
+		[inputPlaceholder]="'Your passcode'"
+		[inputType]="'text'"
+		[inputName]="'Passcode'"
+		[formControl]="passcodeControl"
+	></app-input-component>
+</div>
+
+<div class="flex row j-c-sb">
+	<app-small-button
+		[buttonText]="'I have no passcode'"
+		[inverted]="true"
+		(click)="dialogRef.close(false)"
+	></app-small-button>
+	<app-small-button
+		[inverted]="false"
+		[buttonText]="'Enter session'"
+		[buttonDisabled]="passcodeControl.invalid"
+		(click)="dialogRef.close(passcodeControl.value)"
+	></app-small-button>
+</div>

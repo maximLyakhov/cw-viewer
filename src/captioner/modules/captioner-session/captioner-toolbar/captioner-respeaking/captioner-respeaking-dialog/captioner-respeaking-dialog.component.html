@@ -1,0 +1,71 @@
+<div class="audio-input-dialog">
+	<div class="flex col">
+		<div class="header flex row j-c-sb">
+			<h3 class="confirm-header mr-20"> 🎙 Activate respeaking </h3>
+			<app-icon
+				(click)="dialogRef.close()"
+				[svg]="'close'"
+				class="cross-reject a-s-c"
+			></app-icon>
+		</div>
+
+		<form [formGroup]="audioForm" class="flex col">
+			<label class="mt-20 fs-s fw-6" for="engines"
+				>Choose respeaking engine</label
+			>
+			<mat-radio-group
+				class="flex col j-c-sb mt-20 mb-20 gap"
+				formControlName="engine"
+				id="engines"
+			>
+				<mat-radio-button
+					*ngFor="let engine of engines"
+					[value]="engine.value"
+					color="primary"
+				>
+					{{ engine.title }}
+				</mat-radio-button>
+			</mat-radio-group>
+			<div class="sub-lists">
+				<div class="fs-s fw-6 mt-20 mb-20">Apply SubLists</div>
+				<div class="mb-20">
+					<div *ngFor="let subList of subLists | async" class="flex col">
+						<mat-checkbox
+							(change)="check($event, subList)"
+							class="flex row w-100"
+							color="primary"
+						>
+							<span class="flex-1">
+								{{ subList.name }}
+							</span>
+							<span class="flex-1 notes">
+								{{ subList.notes }}
+							</span>
+						</mat-checkbox>
+					</div>
+				</div>
+			</div>
+			<app-audio-input-select
+				(chosenAudioDevice)="audioForm.controls.input.setValue($event)"
+				(selectionSaved)="audioForm.controls.save.setValue($event)"
+			></app-audio-input-select>
+		</form>
+	</div>
+
+	<div class="actions flex row j-c-sb">
+		<app-small-button
+			(click)="dialogRef.close()"
+			[buttonText]="'Cancel'"
+			[inverted]="true"
+		></app-small-button>
+
+		<app-small-button
+			(click)="dialogRef.close(audioForm.value)"
+			[buttonDisabled]="
+				audioForm.controls.input.invalid || audioForm.controls.engine.invalid
+			"
+			[buttonText]="'Share'"
+			[inverted]="false"
+		></app-small-button>
+	</div>
+</div>

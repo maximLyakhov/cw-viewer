@@ -1,0 +1,76 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"target": "es2017",
+		"module": "esNext",
+		"lib": [
+			"esNext",
+			"dom"
+		],
+		"types": [
+			"dom-mediacapture-record",
+			"node"
+		],
+		"paths": {
+			"@captioner/*": [
+				"src/captioner/*"
+			],
+			"@viewer/*": [
+				"src/viewer/*"
+			],
+			"@enum/*": [
+				"src/shared/constants/*"
+			],
+			"@env": [
+				"src/shared/environments/environment.ts"
+			],
+			"@interface/*": [
+				"src/shared/interfaces/*"
+			],
+			"@service/*": [
+				"src/shared/services/*"
+			],
+			"@cmp/*": [
+				"src/shared/components/*",
+				"src/viewer/components/*",
+				"src/viewer/components/viewer-header/*",
+				"src/captioner/components/*",
+				"src/captioner/components/captioner-header/*"
+			],
+			"@store/*": [
+				"shared/store/*"
+			],
+			"@modules/*": [
+				"src/shared/modules/*",
+				"src/captioner/modules/*",
+				"src/viewer/modules/*"
+			],
+			"@shared/*": [
+				"src/shared/*"
+			],
+			"@configs/*": [
+				"src/configs/*"
+			]
+		},
+		"noEmitOnError": true,
+		"outDir": "./dist/out-tsc",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"importHelpers": true
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true,
+		"fullTemplateTypeCheck": true
+	}
+}

@@ -1,0 +1,22 @@
+<button
+	(click)="!respeaking ? activateRespeaking() : deactivateRespeaking()"
+	class="fs-xs white-btn"
+	[class.off-white]="respeaking"
+	[disabled]="autoCaptioningOn"
+>
+	<div class="flex col j-c-c a-i-c" *ngIf="!respeaking; else respeakingOff">
+		<app-icon *ngIf="!autoCaptioningOn" [svg]="'mic'"></app-icon>
+		<app-icon *ngIf="autoCaptioningOn" [svg]="'mic-disabled'"></app-icon>
+		<span>Turn respeaking on</span>
+	</div>
+	<ng-template #respeakingOff>
+		<div class="flex col j-c-c a-i-c">
+			<img
+				class="icon"
+				src="../../../../../assets/animations/mic-min.gif"
+				alt="disable respeaking"
+			/>
+			<span>Turn respeaking off</span>
+		</div>
+	</ng-template>
+</button>

@@ -1,0 +1,38 @@
+<app-captioner-macro-bar></app-captioner-macro-bar>
+<ng-container *ngIf="loading$ | async">
+	<progress class="mt-20"></progress>
+</ng-container>
+<div class="captions-view flex col w-100 h-100 j-c-c a-i-c">
+	<div class="captions-container w-100 h-100 flex col">
+		<div
+			#scrollMe
+			(initEvent)="scrollToLast(scrollMe)"
+			*ngFor="let capt of captions$ | async; let last = last; trackBy: tracking"
+			[isLast]="last"
+			appElementInit
+			class="flex w-100 col a-i-c"
+		>
+			<app-captioner-caption
+				*ngIf="capt.length"
+				[sentence]="capt"
+				class="w-100"
+			></app-captioner-caption>
+		</div>
+	</div>
+</div>
+<div class="flex row j-c-sb a-i-c gap m-20" style="margin-bottom: 8px">
+	<mat-checkbox
+		[formControl]="scrollingEnabled"
+		class="checkbox"
+		color="primary"
+		disableRipple
+	>
+		<span class="fs-xs flex label"> Auto-scrolling </span>
+	</mat-checkbox>
+	<app-small-button
+		(click)="saveTranscript()"
+		[buttonText]="'Save Transcript'"
+		[inverted]="true"
+		[small]="true"
+	></app-small-button>
+</div>

@@ -1,0 +1,75 @@
+<div
+	[@openClose]="isOpen ? 'open' : 'closed'"
+	class="open-close-container flex col j-c-c h-100"
+>
+	<ng-container [ngSwitch]="isOpen">
+		<ng-container *ngSwitchCase="true">
+			<div class="chat flex col h-100 j-c-sb a-i-fs">
+				<div class="chat-header flex row w-100 a-i-c">
+					<div (click)="toggle()" class="icon close-button-container">
+						<app-icon [svg]="'chevron-left'"></app-icon>
+					</div>
+				</div>
+
+				<div class="messages flex col w-100 h-100 mr-20 ml-20">
+					<div
+						(mouseover)="message.Unread && readMessage(message.ChatId)"
+						*ngFor="
+							let message of messages$ | async;
+							let i = index;
+							let last = last
+						"
+						[class.self]="message.FromUserId === userId"
+						[class.unread]="message.FromUserId !== userId && message.Unread"
+						class="message flex col"
+					>
+						<div class="time fs-xs">
+							{{ message.FromUser }}
+						</div>
+						<div class="message-text flex fs-xs a-s-fs">
+							<span>{{ message.Txt }}</span>
+						</div>
+						<div
+							#scrollMe
+							(initEvent)="scrollToLast(scrollMe)"
+							[isLast]="last"
+							appElementInit
+							class="time fs-xs fw-6"
+						>
+							<span>
+								{{ message.SentEpoch | date: 'h:mm a d LLL yyyy' }}
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="chat-bottom flex row w-100 j-c-c">
+					<div class="input-wrap flex row w-100 j-c-c a-i-c">
+						<div class="input-block">
+							<input
+								(keydown.enter)="sendChat()"
+								[formControl]="chatInput"
+								autofocus
+								class="fs-l"
+								placeholder="Send a message"
+								type="text"
+							/>
+						</div>
+						<div class="icon">
+							<app-icon (click)="sendChat()" [svg]="'message'"></app-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+		<ng-container *ngSwitchCase="false">
+			<div
+				(click)="toggle()"
+				[matBadgeHidden]="(unreadMessages$ | async) === 0"
+				[matBadge]="unreadMessages$ | async"
+				class="w-100 h-100 flex col j-c-c a-i-c fold"
+			>
+				<app-icon [svg]="'chat'"></app-icon>
+			</div>
+		</ng-container>
+	</ng-container>
+</div>
