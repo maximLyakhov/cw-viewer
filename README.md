@@ -1,7 +1,7 @@
 Caption Works: Viewer & Captioner
 ===============
 
-Start project on Fedora 35 linux as Anatolij does
+Start project on Fedora 35
 ================
 
 1. ensure nodejs is of proper version, currently it is `v14.19.0` in stack distros. `dnf install nodejs`
@@ -11,14 +11,10 @@ Start project on Fedora 35 linux as Anatolij does
 5. start application `npm start`
 6. Application will be started on [ http://localhost:4200/](http://localhost:4200/).
 
-Start project:
+Start project with nvm:
 ================
 
 ```
+npm i
 nvm use && ng serve
 ```
-
-How to start? 3 March 2022
-===================
-
-Using local backend - `npm run local:c`. Works on Anatolij's machine.
